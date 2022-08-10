@@ -5,6 +5,7 @@ import './index.css'
 export default class Header extends Component {
   static propTypes={
     addTodo:propTypes.func.isRequired
+    
   }
 
 
