@@ -18,7 +18,10 @@ export default class Item extends Component {
   }
   HandleDelete = (id) => {
     // console.log(this.props)
-    this.props.deleteTodo(id)
+    if(window.confirm("确认删除吗")){
+      this.props.deleteTodo(id)
+    }
+    
   }
 
   render() {
@@ -31,10 +34,10 @@ export default class Item extends Component {
     return (
       <li key={todo.id} style={{ backgroundColor: mouse ? '#ddd' : 'white' }} onMouseEnter={this.HandleMouse(true)} onMouseLeave={this.HandleMouse(false)}>
         <label>
-          <input type="checkbox" defaultChecked={todo.done} onChange={this.HandleCheck(todo.id)} />
+          <input type="checkbox" checked={todo.done} onChange={this.HandleCheck(todo.id)} />
           <span>{todo.name}</span>
         </label>
-        <button onClick={(id) => { this.HandleDelete(id) }} className="btn btn-danger" style={{ display: mouse ? 'block' : 'none' }}>删除</button>
+        <button onClick={() => { this.HandleDelete(todo.id) }} className="btn btn-danger" style={{ display: mouse ? 'block' : 'none' }}>删除</button>
       </li>
     )
   }
