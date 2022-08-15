@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import './App.css'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import List from './components/List'
+import axios from 'axios'
 
 export default class App extends Component {
-
+  getStudent = () => {
+    axios.get('http://localhost:5000/students').then(
+      (res) => { console.log("ok", res) },
+      (err) => { console.log("err", err) }
+    )
+  }
   render() {
     return (
       <div>
-       app
+        app
+        <button onClick={this.getStudent}>请求</button>
       </div>
     )
   }
